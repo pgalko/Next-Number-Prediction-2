@@ -37,6 +37,41 @@ The script works by running a loop that does the following steps:
 
 ![](images/Results_final.png)
 
+## LLM Prompts
+
+**Initial Prompt**
+
+```
+You are an AI analyst and your task is to predict the next number in a sequence of numbers.
+What is the next number following this sequence:{} ?
+If the number is lower than the last number in the sequence, the response should be -1.
+If the number is higher than the last number in the sequence, the response should be 1.
+If the number is the same as the last number in the sequence, the response should be 0.
+The response must be a single number without context.
+As an example, here are some similar Sequences => Responses:{}.
+```
+
+**Feedback after correct prediction**
+
+```
+Correct! Congratulations! Now try with a new sequence:{}.
+If the number is lower than the last number in the sequence, the response should be -1.
+If the number is higher than the last number in the sequence, the response should be 1.
+If the number is the same as the last number in the sequence, the response should be 0.
+The response must be a single number without any context.
+As an example, here are some similar Sequences => Responses:{}.
+```
+
+**Feedback after incorrect prediction**
+
+```
+Incorrect. The number that follows {} is {}. Now try with a new sequence:{}. 
+If the number is lower than the last number in the sequence, the response should be -1.
+If the number is higher than the last number in the sequence, the response should be 1.
+If the number is the same as the last number in the sequence, the response should be 0.
+The response must be a single number without any context.
+As an example, here are some similar Sequences => Responses:{}.
+```
 ## Notes
 
 *  Please note that this isn't intended to be a stock market predictor, and should not be used as such! The DJI dataset has been used because it offers a high degree of variation and overall unpredictability to challenge the model to the max. However, any time series could be used instead. If there is a recuring pattern in the data it is likely that the model will pick it up.
